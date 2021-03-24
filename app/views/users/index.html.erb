@@ -1,0 +1,59 @@
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<h1>User info</h1>
+
+  <div class="profile-container">
+     <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
+  <p>name</p> <h3 class="profile-name"><%= current_user.name %></h3>
+  <p>introduction</p> <h3><%= current_user.introduction %></h3>
+
+  <p><%= link_to  edit_user_path(current_user), method: :get do %>
+       <i class="fas fa-user-cog"></i>
+     <% end %>
+  </p>
+
+  </div>
+  <div class= "new-book-container">
+
+    <h1>New book</h1>
+  <%= form_with model: @book, url:'/books', local:true do |f| %>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+    <h4>Opinion</h4>
+    <%= f.text_area :body %>
+    <%= f.submit 'Create Book' %>
+  <% end %>
+
+  </div>
+</div>
+
+<div class="col-md-8 offset-md-1">
+  <div class= "users-container">
+
+    <h1>Users</h1>
+
+    <table class="table table-striped">
+     <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @users.each do |user|%>
+    <tbody>
+      <tr>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg"  %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to 'Show', user_path(user.id)%></td>
+      </tr>
+    </tbody>
+    <% end %>
+    </table>
+
+  </div>
+</div>
+</div>
+</div>
