@@ -24,9 +24,12 @@ before_action :ensure_correct_user, only:[:edit, :update]
   end
 
   def show
+    @books = Book.all
     @book = Book.find(params[:id])
     @book_new = Book.new
     @user = @book.user
+    
+    @book_comment = BookComment.new
   end
 
   def edit
