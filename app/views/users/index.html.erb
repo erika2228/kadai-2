@@ -8,6 +8,8 @@
 
   <p>name</p> <h3 class="profile-name"><%= current_user.name %></h3>
   <p>introduction</p> <h3><%= current_user.introduction %></h3>
+  
+  
 
   <p><%= link_to  edit_user_path(current_user), method: :get do %>
        <i class="fas fa-user-cog"></i>
