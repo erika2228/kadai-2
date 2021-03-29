@@ -1,18 +1,24 @@
 
-<h1>welcome to <i class="fas fa-book"></i>Bookers !!</h1>
+<div class = "top">
 
-<p>In <i class="fas fa-book"></i>Bookers,<br>
+<h1>welcome to <i class="fas fa-book"></i>Bookers !!</h1><br>
+
+<p>In <i class="fas fa-book"></i>Bookers,<br><br>
 
 you can share and exchange your opinions , inpressions , and emotions
 
-<br>
+<br><br>
 about various books!</p>
 
+　　　<div class="login2">
       <li>
-        <%= link_to "Log in", new_user_session_path %>
+        <%= link_to "Log in", new_user_session_path, class: 'login' %>
       </li>
-      
+      </div>
+
       <li>
-        <%= link_to "Sign Up", new_user_registration_path %>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'signup' %>
       </li>
-      
+
+</div>
+

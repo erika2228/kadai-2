@@ -13,7 +13,6 @@ before_action :ensure_correct_user, only:[:edit, :update]
      redirect_to book_path(@book.id), notice: 'You have created book successfully.'
     else
       @books = Book.all
-
       render :index
     end
   end

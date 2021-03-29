@@ -10,29 +10,30 @@
   </head>
 
   <body>
-     <% flash.each do |key, value| %>
-       <%= content_tag(:div, value, class: "#{key}") %>
-  　  <% end %>
+    
+  <div class = "header">
 
   　<a href="/">Bookers&nbsp;&nbsp;&nbsp;</a>
+  　
+  　<div class="btn">
 
     <% if user_signed_in? %>
-      <li style = "display:inline"; "list-style:none">
-        <%= link_to user_path(current_user.id), method: :get do%>
+      <li>
+        <%= link_to user_path(current_user.id), method: :get, class: "link" do %>
         <i class="fas fa-home"></i> Home&nbsp;&nbsp;
         <% end %>
       </li>
-      <li style = "display:inline"; "list-style:none">
+      <li>
         <%= link_to '/users', method: :get do%>
         <i class="fas fa-users"></i>Users&nbsp;&nbsp;
         <% end %>
       </li>
-      <li style = "display:inline"; "list-style:none">
+      <li>
         <%= link_to '/books', method: :get do%>
         <i class="fas fa-book-open"></i>Books&nbsp;&nbsp;
         <% end %>
       </li>
-      <li style = "display:inline"; "list-style:none">
+      <li>
         <%= link_to destroy_user_session_path, method: :delete do%>
         <i class="fas fa-sign-out-alt"></i>logout&nbsp;&nbsp;
         <% end %>
@@ -40,33 +41,42 @@
 
 
     <% else %>
-      <li style = "display:inline"; "list-style:none">
+      <li>
         <%= link_to root_path, method: :get do%>
         <i class="fas fa-home"></i> Home&nbsp;&nbsp;
         <% end %>
       </li>
-      <li style = "display:inline"; "list-style:none">
+      <li>
         <%= link_to home_about_path, method: :get do%>
         <i class="fas fa-link"></i> About&nbsp;&nbsp;
         <% end %>
       </li>
-      <li style = "display:inline"; "list-style:none">
+      <li>
         <%= link_to new_user_registration_path, method: :get do%>
         <i class="fas fa-user-plus"></i>sign up&nbsp;&nbsp;
         <% end %>
       </li>
-      <li style = "display:inline"; "list-style:none">
+      <li>
         <%= link_to new_user_session_path, method: :get do%>
         <i class="fas fa-sign-in-alt"></i>login&nbsp;&nbsp;
         <% end %>
       </li>
+      
     <% end %>
+    
+    </div>
+    
+  </div>
+    
+    <% flash.each do |key, value| %>
+       <%= content_tag(:div, value, class: "#{key}") %>
+  　<% end %>
 
     <%= yield %>
 
 
   <div class="footer">
    <div class="container">CopyRight Infratop.inc</div>
-</div>
+  </div>
   </body>
 </html>

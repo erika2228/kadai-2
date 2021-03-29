@@ -6,8 +6,8 @@
     <div class="profile-container">
        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
-    <p>name</p> <h3 class="profile-name"><%= @user.name %></h3>
-    <p>introduction</p> <h3><%= @user.introduction %></h3>
+    <h5>name</h5> <h5 class="profile-name"><%= @user.name %></h5></br>
+    <h5>introduction</h5> <h5><%= @user.introduction %></h5>
 
 
       <p><%= link_to '',  edit_user_path(@user), method: :get, class:"btn btn-outline-secondary btn-block fas fa-user-cog" %></p>
@@ -33,7 +33,7 @@
 
     <table class="table table-striped">
       <tr>
-        <td><%= attachment_image_tag @user, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg" %><p class="profile-name"><%=link_to @user.name, user_path(@user.id) %></p></td>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40'%><p class="profile-name"><%=link_to @user.name, user_path(@user.id) %></p></td>
         <td><%= link_to @book.title, book_path %></td>
         <td><%= @book.body %></td>
         <td><% @books.each do |book|%>
