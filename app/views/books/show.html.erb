@@ -37,21 +37,19 @@
         <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40'%><p class="profile-name"><%=link_to @user.name, user_path(@user.id) %></p></td>
         <td><%= link_to @book.title, book_path %></td>
         <td><%= @book.body %></td>
-        <td><% @books.each do |book|%>
-              <% if book.favorited_by?(current_user) %>
+        <td><% if @book.favorited_by?(current_user) %>
                 <p>
-                  <%= link_to book_favorites_path(book), method: :delete do %>
-                    <i class="fas fa-heart"></i><%= book.favorites.count %>
+                  <%= link_to book_favorites_path(@book), method: :delete do %>
+                    <i class="fas fa-heart"></i><%= @book.favorites.count %>
                   <% end %>
                 </p>
               <% else %>
                 <p>
-                <%= link_to book_favorites_path(book), method: :post do %>
-                    <i class="far fa-heart"></i><%= book.favorites.count %>
+                <%= link_to book_favorites_path(@book), method: :post do %>
+                    <i class="far fa-heart"></i><%= @book.favorites.count %>
                 <% end %>
                 </p>
               <% end %>
-            <% end %>
         </td>
         <td>コメント数：<%= @book.book_comments.count %></td>
 
