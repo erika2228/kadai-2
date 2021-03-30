@@ -1,3 +1,4 @@
+<div class="show">
 <div class="container">
 <div class="row">
 <div class="col-md-3">
@@ -60,29 +61,39 @@
 
       <% end %>
     </table>
-      
-    <div class="comments">
+
+  <table class = "comments">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
       <% @book.book_comments.each do |book_comment| %>
-        <p><%= attachment_image_tag @user, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg" %><p class="profile-name">
-           <%=link_to book_comment.user.name, user_path(book_comment.user.id) %></p>
-            <%= book_comment.comment %>
-            </div>
-      
-            <% if book_comment.user == current_user %>
+    <tbody>
+      <tr>
+        <td><p><%= attachment_image_tag @user, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg", size:'40x40'%></td>
+            <td><%= book_comment.comment %></td>
+            <td><% if book_comment.user == current_user %>
               <div class="comment-delete">
                 <%= link_to "Destroy", book_book_comment_path(@book, book_comment), method: :delete %>
               </div>
-            <% end %>
-           <% end %>
-        
+            <% end %></td>
+
+      </tbody>
+      </tr>
+        <td><p class="profile-name"><%=link_to book_comment.user.name, user_path(book_comment.user.id) %></p></td>
+        <% end %>
+    </table>
         <div class="new-comment">
         <%= form_with(model:[@book,@book_comment],local: true) do |f| %>
           <%= f.text_area:comment, rows:'5' %>
           <%= f.submit "送信" %>
         <% end %>
       </div>
-      
-</div>
 
+</div>
+</div>
 </div>
 </div>
